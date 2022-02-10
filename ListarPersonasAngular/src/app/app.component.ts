@@ -14,12 +14,8 @@ export class AppComponent {
     new Persona('Andres','Ramirez')
   ];
 
-  nombreImput:string = '';
-  apellidoImput:string = '';
-
-  agregarPersona(){
-    let persona1 = new Persona(this.nombreImput, this.apellidoImput);
-    this.personas.push(persona1);
+  personaAgregada(persona: Persona){
+    this.personas.push(persona);
   }
 
 }
