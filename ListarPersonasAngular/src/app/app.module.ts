@@ -1,3 +1,4 @@
+import { LogginService } from './LoggingService.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -16,7 +17,7 @@ import { FormularioComponent } from './formulario/formulario.component';
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [LogginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
