@@ -1,5 +1,6 @@
+import { PersonaService } from './../personas.service';
 import { LogginService } from './../LoggingService.service';
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Persona } from '../persona.model';
 
 @Component({
@@ -9,14 +10,15 @@ import { Persona } from '../persona.model';
 })
 export class FormularioComponent implements OnInit {
 
-  @Output() personaCreada = new EventEmitter<Persona>();
+  //@Output() personaCreada = new EventEmitter<Persona>();
 
   //nombreInput:string = '';
   //apellidoInput:string = '';
   @ViewChild('nombreInput') nombreInput: ElementRef ;
   @ViewChild('apellidoInput') apellidoInput: ElementRef;
 
-  constructor(private logginService: LogginService){}
+  constructor(private logginService: LogginService,
+              private personaService:PersonaService){}
   ngOnInit() {
 
   }
@@ -25,7 +27,8 @@ export class FormularioComponent implements OnInit {
       this.nombreInput.nativeElement.value,
       this.apellidoInput.nativeElement.value);
       this.logginService.enviaMensajeAConsola("Envia persona con nombre: "+ persona1.nombre + " apellido: "+ persona1.apellido);
-    this.personaCreada.emit(persona1);
+      //this.personaCreada.emit(persona1);
+      this.personaService.agregarPersona(persona1);
   }
 
 }
